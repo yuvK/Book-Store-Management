@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="BookStore.AddDiscountView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:StoreManager"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters" 
+    xmlns:local="using:BookStore"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <local:DateConverter x:Key="dateConverter"/>
+        <local:ItemsOnSaleConverter x:Key="itemsOnSaleConverter"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.Resources>
+            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+            <DataTemplate x:DataType="data:Discount" x:Key="RowDetailsTemplate">
+                <StackPanel Background="{StaticResource LightGreen}">
+                    <TextBlock Margin="10" Text="Items on sale under this Discount:" Foreground="{StaticResource FontColor}"/>
+                    <TextBlock Margin="10" Text="{x:Bind ItemsOnSale, Converter={StaticResource itemsOnSaleConverter}}" 
+                               Foreground="{StaticResource FontColor}"/>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Live Discounts:" HorizontalAlignment="Center" Margin="0,12,0,0"
+                   FontSize="15" FontWeight="Bold"/>
+        <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+
+            <controls:DataGrid x:Name="DiscountsListView" CanUserSortColumns="True"
+                               CanUserReorderColumns="True" SelectionMode="Single"
+                               IsReadOnly="True" Height="auto" Margin="12"
+                               AutoGenerateColumns="False" 
+                               RowDetailsVisibilityMode="VisibleWhenSelected"
+                               ItemsSource="{x:Bind manager.DiscountList}"
+                               RowDetailsTemplate="{StaticResource RowDetailsTemplate}"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#114B5F"
+                               BorderBrush="#114B5F"
+                               BorderThickness="1">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTemplateColumn Header="Discount By">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="data:Discount">
+                                <StackPanel Orientation="Horizontal" 
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind DiscountBy}" Padding="5,0,5,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTemplateColumn Header="Name">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="data:Discount">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind Name}" Padding="5,0,5,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTemplateColumn Header="Precentage">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="data:Discount" >
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind DiscountPercentage}" 
+                                               Padding="5,0,5,0" Foreground="{StaticResource FontColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+                    </controls:DataGridTemplateColumn>
+                    <controls:DataGridTemplateColumn Header="Added Date">
+                        <controls:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="data:Discount" >
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind AddedDay, Converter={StaticResource dateConverter}}" Padding="5,0,5,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </controls:DataGridTemplateColumn.CellTemplate>
+
+                    </controls:DataGridTemplateColumn>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+            <Button Name="DiscountDeleteBtn" Content="Delete Discount" Click="DiscountDeleteBtn_Click"
+                Grid.Column="1" RelativePanel.Below="DiscountsListView" Margin="10"/>
+            <Button Name="DiscountSaveBtn" Content="Save Discounts" Click="DiscountSaveBtn_Click"
+                Grid.Column="1" RelativePanel.Below="DiscountsListView" RelativePanel.RightOf="DiscountDeleteBtn" Margin="10"/>
+        </RelativePanel>
+        <ListView HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  BorderBrush="{StaticResource FontColor}"
+                  Background="{StaticResource BackgroundColor2}"
+                  BorderThickness="2"
+                  Grid.Column="1" Margin="20">
+            <ListViewHeaderItem>
+                <TextBlock Text="Add Discount:" FontSize="15" FontWeight="Bold"
+                           Margin="50,0,0,0"/>
+            </ListViewHeaderItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Select Discount type: " Margin="0,0,10,0" Width="145.523"/>
+                    <ComboBox Name="DiscountTypeCbx" MinWidth="100"
+                              SelectionChanged="DiscountTypeCbx_SelectionChanged"/>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem Name="GenreSelectListView" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Select Option: " Margin="0,0,10,0" Width="145.523"/>
+                    <ComboBox Name="DiscountOptionCbx" MinWidth="100"
+                              />
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Enter discount Precent: " Margin="0,0,10,0"/>
+                    <TextBox Name="DiscountPrecentageTbx" MinWidth="100"/>
+                </StackPanel>
+            </ListViewItem>
+
+            <Button Name="AddDiscountBtn" Margin="0,20"
+                    Click="AddDiscountBtn_Click" Content="Add Discount"/>
+            <TextBlock x:Name="screenTbl" Grid.Column="0" TextWrapping="Wrap"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                   Margin="20" FontSize="20" Foreground="Red"/>
+        </ListView>
+    </Grid>
+</Page>

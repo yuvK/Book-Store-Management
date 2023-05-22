@@ -1,0 +1,169 @@
+﻿<Application
+    x:Class="BookStore.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookStore">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="FontColor">#114B5F</Color>
+            <Color x:Key="BackgroundColor">#F3E9D2</Color>
+            <Color x:Key="BackgroundColor2">#C6DABF</Color>
+            <Color x:Key="LightGreen">#88D498</Color>
+            <Color x:Key="DarkGreen">#1A936F</Color>
+            
+            
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundColor2}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource FontColor}"/>
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundColor2}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource FontColor}"/>
+            </Style>
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundColor2}"/>
+            </Style>
+            
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{StaticResource BackgroundColor}"/>
+
+                    <SolidColorBrush x:Key="ButtonBackground" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Gray"/>
+                    <SolidColorBrush x:Key="ButtonForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="White"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="White"/>
+
+
+
+
+                    <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="ComboBoxForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxForegroundFocused" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundDisabled" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundFocused" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundFocusedPressed" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForegroundPressed" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForegroundDisabled" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedUnfocused" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemBackgroundPressed" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="{StaticResource LightGreen}"/>
+                    
+                    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="{StaticResource FontColor}"/>
+
+                    <SolidColorBrush x:Key="DatePickerSpacerFill" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="DatePickerHeaderForegroundDisabled" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonForegroundPointerOver" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonForegroundPressed" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonForegroundDisabled" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonForegroundFocused" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonBackground" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonBackgroundPointerOver" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonBackgroundPressed" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonBackgroundFocused" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="DatePickerButtonBorderBrush" Color="{StaticResource FontColor}"/>
+                    
+                    
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonForegroundPointerOver" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonForegroundPressed	" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBackground	" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBackgroundPointerOver	" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBackgroundPressed	" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBorderBrush	" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBorderBrushPointerOver	" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="DateTimePickerFlyoutButtonBorderBrushPressed	" Color="{StaticResource FontColor}"/>
+
+                    <SolidColorBrush x:Key="GridViewItemBackground" Color="{StaticResource BackgroundColor}"/>
+                    <SolidColorBrush x:Key="GridViewItemBackgroundPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="GridViewItemBackgroundPressed" Color="Transparent"/>
+                    <SolidColorBrush x:Key="GridViewItemBackgroundSelected" Color="Transparent"/>
+                    <SolidColorBrush x:Key="GridViewItemBackgroundSelectedPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="GridViewItemBackgroundSelectedPressed" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="GridViewItemForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="GridViewItemForegroundPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="GridViewItemForegroundSelected" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="GridViewItemFocusVisualPrimaryBrush" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="GridViewItemFocusVisualSecondaryBrush" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="GridViewItemFocusBorderBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="GridViewItemFocusSecondaryBorderBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="GridViewItemCheckBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="GridViewItemPointerOverForeground" Color="{StaticResource FontColor}" />
+                    
+
+
+                    <SolidColorBrush x:Key="AutoSuggestBoxLightDismissOverlayBackground" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="AutoSuggestBoxSuggestionsListBackground" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="AutoSuggestBackgroundThemeBrush" Color="{StaticResource LightGreen}"/>
+
+
+                    <SolidColorBrush x:Key="TextBoxButtonPointerOverForegroundThemeBrush" Color="{StaticResource DarkGreen}"/>
+
+
+                    <!--<SolidColorBrush x:Key="ListViewItemBackground" Color="{StaticResource BackgroundColor2}"/>-->
+                    <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ListViewItemBackgroundPressed" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="{StaticResource BackgroundColor2}"/>
+                    <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="ListViewItemForeground" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ListViewItemForegroundPointerOver" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ListViewItemForegroundSelected" Color="{StaticResource DarkGreen}"/>
+                    <SolidColorBrush x:Key="ListViewItemFocusVisualPrimaryBrush" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="ListViewItemFocusVisualSecondaryBrush" Color="{StaticResource LightGreen}"/>
+                    <SolidColorBrush x:Key="ListViewItemFocusBorderBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ListViewItemFocusSecondaryBorderBrush" Color="{StaticResource FontColor}"/>
+                    <SolidColorBrush x:Key="ListViewItemCheckBrush" Color="{StaticResource FontColor}"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+<!--colors used in app:-->
+<!--midnightGreen #114B5F 
+    illuminating emerald #1A936F
+    granny smith apple #88D498
+    tea green #C6DABF
+    eggshell #F3E9D2-->

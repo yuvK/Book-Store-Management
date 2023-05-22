@@ -1,0 +1,167 @@
+﻿<Page
+    x:Class="BookStore.ReportsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookStore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:BookLib"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" 
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <local:DateConverter x:Key="dateConverter"/>
+        <local:ItemsOnSaleConverter x:Key="itemsOnSaleConverter"/>
+        <local:PriceToStringConverter x:Key="PriceConverter"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        </Grid.Resources>
+
+        <controls:DataGrid 
+            x:Name="FilteredListView"
+            ItemsSource="{x:Bind tempList}"
+            AutoGenerateColumns="False"
+            Background="{StaticResource BackgroundColor2}"
+            AlternatingRowBackground="{StaticResource LightGreen}"
+            AreRowGroupHeadersFrozen="True"
+            GridLinesVisibility="Horizontal"
+            HorizontalGridLinesBrush="#114B5F"
+            BorderBrush="#114B5F"
+            BorderThickness="1"
+            CanUserSortColumns="True"
+            IsReadOnly="True"
+            Height="auto" Width="auto"
+            Margin="5">
+
+            <controls:DataGrid.Columns>
+
+                <controls:DataGridTemplateColumn Header="Type">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind ItemType}" 
+                                       HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Title">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind Title}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Sale Date">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="{x:Bind SaleTime, Converter={StaticResource dateConverter}}" Padding="5,0,5,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Author">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind Author}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Publisher">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind Publisher}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Price">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind Price, Converter={StaticResource PriceConverter}}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="On Sale">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind OnSale}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="Price After Discount">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Sale">
+                            <TextBlock Text="{x:Bind ItemDiscount, Converter={StaticResource PriceConverter}}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+
+        <Border  Grid.Column="1"  BorderThickness="2" Padding="5"
+                 BorderBrush="{StaticResource FontColor}"
+                 Background="{StaticResource DarkGreen}" MaxWidth="200">
+            <StackPanel>
+                <Viewbox Height="53" MaxWidth="150" HorizontalAlignment="Left" Stretch="Fill">
+                    <DatePicker Name="startDate" Header="Pick a start date"
+                        SelectedDateChanged="startDate_SelectedDateChanged" FontFamily="Arial"
+                                />
+                </Viewbox>
+                <Viewbox Height="53" MaxWidth="150" HorizontalAlignment="Left" Stretch="Fill">
+                    <DatePicker Name="endDate" Header="Pick an end date"
+                        SelectedDateChanged="endDate_SelectedDateChanged" FontFamily="Arial"
+                                />
+                </Viewbox>
+                <!--<TextBox x:Name="FilterByTitle" Width="150" Header="Title" Margin="0,0,10,0"
+	                     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>-->
+                <AutoSuggestBox x:Name="FilterByTite" Width="150" Margin="0,10,0,0"
+                                HorizontalAlignment="Center"  
+                                QueryIcon="Find" PlaceholderText="Title.."
+                                Background="{StaticResource BackgroundColor2}"
+                                TextChanged="FilterByTite_TextChanged"
+                                SuggestionChosen="FilterByTite_SuggestionChosen"
+                                QuerySubmitted="FilterByTite_QuerySubmitted">
+                    <TextBlock x:Name="TitleSuggestionOutput" />
+                </AutoSuggestBox>
+                <!--<TextBox x:Name="FilterByAuthor" Width="150" Header="Author" Margin="0,0,10,0"
+	                     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>-->
+                
+                <AutoSuggestBox x:Name="FilterByAuthor" Width="150" Margin="0,10,0,0"
+                                HorizontalAlignment="Center"  
+                                QueryIcon="Find" PlaceholderText="Author.."
+                                Background="{StaticResource BackgroundColor2}"
+                                TextChanged="FilterByAuthor_TextChanged"
+                                SuggestionChosen="FilterByAuthor_SuggestionChosen"
+                                QuerySubmitted="FilterByAuthor_QuerySubmitted">
+                    <TextBlock x:Name="AuthorSuggestionOutput" />
+                </AutoSuggestBox>
+                
+                <!--<TextBox x:Name="FilterByPublisher" Width="150" Header="Publisher" Margin="0,0,10,0"
+	                     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>-->
+                <AutoSuggestBox x:Name="FilterByPublisher" Width="150" Margin="0,10,0,0"
+                                HorizontalAlignment="Center"  
+                                QueryIcon="Find" PlaceholderText="Publisher.."
+                                Background="{StaticResource BackgroundColor2}"
+                                TextChanged="FilterByPublisher_TextChanged"
+                                SuggestionChosen="FilterByPublisher_SuggestionChosen"
+                                QuerySubmitted="FilterByPublisher_QuerySubmitted">
+                    <TextBlock x:Name="PublisherSuggestionOutput" />
+                </AutoSuggestBox>
+
+              
+                <Button Name="PrintListBtn" HorizontalAlignment="Center" Background="{StaticResource BackgroundColor2}"
+                        Click="PrintListBtn_Click" Margin="20">Save Report</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

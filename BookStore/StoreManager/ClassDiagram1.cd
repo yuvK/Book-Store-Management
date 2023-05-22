@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StoreManager.BSManager" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoAgAAAAAAAAABQgQAECAggAAAEAABAIAAgAARgA=</HashCode>
+      <FileName>BSManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.Discount">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAQAAAAAAQAAAAAAAIECAAA=</HashCode>
+      <FileName>Discount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.DiscountManager" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAQAEAAAAAAAAAAgAAAAAAIA=</HashCode>
+      <FileName>DiscountManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.FilterManager" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAIAAAAAEAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>FilterManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.Purchase" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAQAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Purchase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.PurchaseManager" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAgIAAAAAAAAAAAEAAEAACAAAAAAAgQAAAAAAA=</HashCode>
+      <FileName>PurchaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager.SaveLoadLogic&lt;T&gt;" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAASAAAAkAAAAAAQAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>SaveLoadLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="StoreManager.DiscountBy" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAiAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Discount.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="StoreManager.FilterBy" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAiAIAAAAAgAAAAAAAEIAEAAAAAAA=</HashCode>
+      <FileName>FilterManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

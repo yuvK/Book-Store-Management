@@ -1,0 +1,117 @@
+﻿<Page
+    x:Class="BookStore.EditItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookStore"
+    xmlns:data="using:BookLib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center"
+                  VerticalAlignment="Center"  Margin="50">
+            
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0"  Margin="5" Width="83.27">Title:</TextBlock>
+                    <TextBox x:Name="titleTbx" Grid.Column="1"  Margin="5" Width="296" 
+                             Text="{x:Bind itemToEdit.Title, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Author:</TextBlock>
+                    <TextBox x:Name="authorTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.Author, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Edition:</TextBlock>
+                    <TextBox x:Name="editionTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.Edition, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Genre:</TextBlock>
+                    <ComboBox x:Name="genreCbx"  Grid.Column="1" Margin="5" Width="296"
+                              SelectedItem="{x:Bind itemToEdit.GenrE}"></ComboBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Price:</TextBlock>
+                    <TextBox x:Name="priceTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.Price, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">ISBN:</TextBlock>
+                    <TextBox x:Name="isbnTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.ISBN, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Publisher:</TextBlock>
+                    <TextBox x:Name="publisherTbx" Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.Publisher, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Publish Date:</TextBlock>
+                    <DatePicker x:Name="publishDateDp"  Grid.Column="1" Margin="5" 
+                                Width="296"
+                                SelectedDate="{x:Bind itemToEdit.PublishDate}"
+                                DayVisible="False"
+                                MonthFormat="{}{month.full}"/>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Copies:</TextBlock>
+                    <TextBox x:Name="copiesTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.Copies, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Image path:</TextBlock>
+                    <TextBox x:Name="imagePathTbx"  Grid.Column="1" Margin="5" Width="296"
+                             Text="{x:Bind itemToEdit.ImagePath, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Margin="5" Width="83.27">Desciption:</TextBlock>
+                    <TextBox x:Name="descriptionTbx"  Grid.Column="1" Margin="5" Width="296"
+                             MaxWidth="320"
+                             MaxHeight="100" TextWrapping="Wrap" 
+                             Text="{x:Bind itemToEdit.Description, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+        <TextBlock x:Name="screenTbl" Grid.Row="2" TextWrapping="Wrap"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   Margin="0,40,350,0" FontSize="15" Foreground="Red"/>
+        <Button x:Name="UpdateItemBtn" Grid.Row="2" Content="Update"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Click="UpdateItemBtn_Click" >
+
+        </Button>
+
+    </Grid>
+</Page>
